@@ -4,4 +4,31 @@ sudo apt-add-repository ppa:ondrej/php
 sudo apt update
 sudo apt show php
 sudo apt install php
+sudo apt install php-cli php-gd php-curl php-mysql
+sudo apt install libapache2-mod-php
 php -v
+
+sudo apt install apache2
+sudo apache2ctl configtest
+
+sudo service apache2 restart
+sudo service apache2 start
+sudo service apache2 stop
+
+
+http://www.yamamo10.jp/yamamoto/comp/home_server/WEB_server3/apache/index.php
+
+
+https://stackoverflow.com/questions/5212877/how-to-start-with-php-on-ubuntu
+
+sudo vi /etc/apache2/sites-available/000-default.conf
+Change DocumentRoot /var/www/html to /home/user/yoursubdir
+
+sudo vi /etc/apache2/apache2.conf
+<Directory /home/user/>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory> 
+
+sudo service apache2 restart
