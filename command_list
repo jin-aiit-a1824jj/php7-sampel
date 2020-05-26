@@ -1,0 +1,7 @@
+https://xn--o9j8h1c9hb5756dt0ua226amc1a.com/?p=3532
+sudo apt install software-properties-common
+sudo apt-add-repository ppa:ondrej/php
+sudo apt update
+sudo apt show php
+sudo apt install php
+php -v
