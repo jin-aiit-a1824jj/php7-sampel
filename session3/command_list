@@ -1,0 +1,83 @@
+create table items ( id int unsigned auto_increment not null primary key, name Text not null);
+desc items;
+INSERT INTO items SET id=1, name='商品100'; 
+
+
+create table my_items(id INT, itme_name TEXT, price INT);
+show tables;
+desc my_items;
+INSERT INTO my_items SET id=1, itme_name='イチゴ', price=300; 
+
+
+UPDATE my_items SET price=180 WHERE id=1;
+
+ALTER TABLE my_items RENAME COLUMN itme_name TO item_name;
+alter table my_items modify id int unsigned auto_increment not null primary key;
+alter table my_items add keyword text;
+delete from my_items;
+
+insert into my_items set item_name='いちご', keyword='赤い、甘い、ケーキ', price=180;
+insert into my_items set item_name='りんご', keyword='丸い、赤い、パイ', price=90;
+insert into my_items set item_name='ばなな', keyword='パック、甘い、黄色', price=120;
+insert into my_items set item_name='ブルーベリー', keyword='袋入り、青い、眼精疲労', price=200;
+
+
+create table makers ( id int unsigned auto_increment not null primary key, name Text, address Text, tel Text);
+
+insert into makers set name='山田さん', address='東京都港区', tel='000-111-2222';
+insert into makers set name='斎藤さん', address='北海道小樽市', tel='111-222-3333';
+insert into makers set name='川上さん', address='神奈川県横浜市', tel='222-333-4444';
+
+
+alter table my_items add sales int not null;
+alter table my_items add modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+alter table my_items add maker_id int not null;
+
+update my_items set maker_id=1 where id=2;
+update my_items set maker_id=2 where id=3;
+update my_items set maker_id=1 where id=4;
+update my_items set maker_id=3 where id=5;
+
+update my_items set sales=3 where id=2;
+update my_items set sales=12 where id=3;
+update my_items set sales=7 where id=4;
+update my_items set sales=1 where id=5;
+
+
+select * from makers, my_items WHERE my_items.id=2 and makers.id=my_items.maker_id;
+
+select * from makers, my_items WHERE makers.id=my_items.maker_id;
+
+
+create table carts ( id int unsigned auto_increment not null primary key, item_id int, count int);
+
+insert into carts set item_id=2, count= 5;
+insert into carts set item_id=3, count= 3;
+insert into carts set item_id=2, count= 1;
+insert into carts set item_id=2, count= 3;
+insert into carts set item_id=4, count= 2;
+insert into carts set item_id=2, count= 2;
+
+select * from my_items, carts where my_items.id=carts.item_id;
+select sum(count) from carts;
+select item_id, sum(count) from carts group by item_id;
+select item_name, sum(count) from my_items, carts where my_items.id=carts.item_id group by item_id;
+
+//https://www.p-nt.com/s/technicblog/archives/204
+//https://www.kakiro-web.com/memo/mysql-sql-mode.html
+select item_name, sum(count) from my_items left join carts on my_items.id=carts.item_id group by carts.item_id;
+SELECT @@session.sql_mode;
+SET SESSION sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+
+select distinct(item_id) from carts;
+select * from my_items where price between 50 and 149;
+select * from my_items where id in (2, 4);
+select * from carts limit 3;
+select i.item_name, sum(c.count) from my_items i , carts c where i.id=c.item_id group by c.item_id;
+
+
+//https://qiita.com/mikakane/items/6857a4ae25ceaed4ee4e
+sudo mysqldump -u root mydb > dump.sql
+
+
