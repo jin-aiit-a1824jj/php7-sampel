@@ -6,6 +6,7 @@ sudo apt show php
 sudo apt install php
 sudo apt install php-cli php-gd php-curl php-mysql
 sudo apt install libapache2-mod-php
+sudo apt install php-xml
 php -v
 
 sudo apt install apache2
