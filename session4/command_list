@@ -1,0 +1,1 @@
+create table memos ( id int unsigned auto_increment not null primary key, memo text, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
