@@ -1,0 +1,21 @@
+sudo mysql -u root
+create database mini_bbs;
+grant all on mini_bbs.* to mydbuser@localhost with grant option;
+mysql -u mydbuser -p
+
+create table members (
+  id int unsigned auto_increment not null primary key,
+  name varchar(255),
+  email varchar(255),
+  password varchar(100),
+  picture varchar(255),
+  created DATETIME,
+  modified TIMESTAMP);
+
+create table posts (
+  id int unsigned auto_increment not null primary key,
+  message text,
+  member_id int,
+  reply_message_id int,
+  created DATETIME,
+  modified TIMESTAMP);
