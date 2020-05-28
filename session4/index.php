@@ -26,6 +26,10 @@
         } catch(PDOException $e) {
           echo 'DB接続エラー：'.$e->getMessage();
         }
+
+        $count = $db->exec('INSERT INTO my_items SET maker_id=1, item_name="もも", price=210, keyword="缶詰、ビンク、甘い", sales=0 ');
+        echo $count.'件のデータを挿入しました'; 
+        var_dump($db->errorInfo());
       ?>
     </pre>
   </main>
