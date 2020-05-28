@@ -19,3 +19,7 @@ create table posts (
   reply_message_id int,
   created DATETIME,
   modified TIMESTAMP);
+
+
+  mkdir member_picture
+  chmod 777 -R member_picture
