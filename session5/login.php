@@ -15,7 +15,11 @@
         $_SESSION['time'] = time();
         header('Location: index.php');
         exit();
+      }else{
+        $error['login'] = 'failed';
       }
+    } else {
+      $error['login'] = 'blank';
     }
   }
 ?>
@@ -44,6 +48,15 @@
         <dt>メールアドレス</dt>
         <dd>
           <input type="text" name="email" size="35" maxlength="255" value="<?php echo htmlspecialchars($_POST['email']); ?>" />
+        
+          <?php if($error['login'] && $error['login'] === 'blank'): ?>
+					<p class="error">* メールアドレスとパスワードをご記入してください</p>
+					<?php endif; ?>
+					<?php if($error['login'] && $error['login'] === 'failed'): ?>
+					<p class="error">* ログインに失敗しました。正しくご記入ください</p>
+					<?php endif; ?>
+        
+        
         </dd>
         <dt>パスワード</dt>
         <dd>
