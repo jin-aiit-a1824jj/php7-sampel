@@ -42,6 +42,18 @@
         <?php endwhile; ?>
       </article>
 
+      <?php if( ($page >= 2)): ?>
+        <a href="index.php?page=<?php print($page-1); ?>"> <?php print($page-1); ?>ページ目へ</a>
+        |
+      <?php endif; ?>
+      <?php 
+        $counts = $db->query('SELECT COUNT(*) as cnt FROM memos');
+        $count = $counts->fetch();
+        $max_page = ceil($count['cnt']/5);
+        if ($page < $max_page): 
+      ?>
+        <a href="index.php?page=<?php print($page+1); ?>"> <?php print($page+1); ?>ページ目へ</a>
+      <?php endif; ?>
   </main>
 
 </body>
