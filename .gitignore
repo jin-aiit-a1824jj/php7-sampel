@@ -24,4 +24,4 @@
 /app/Config/database.php
 /vendors/*
 
-!/member_picture/*
+sessions5/member_picture/*
