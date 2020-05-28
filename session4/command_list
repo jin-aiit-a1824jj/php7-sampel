@@ -1,1 +1,18 @@
 create table memos ( id int unsigned auto_increment not null primary key, memo text, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+
+INSERT INTO memos SET memo="メモ１１";
+INSERT INTO memos SET memo="メモ2１";
+INSERT INTO memos SET memo="メモ3１";
+INSERT INTO memos SET memo="メモ4１";
+INSERT INTO memos SET memo="メモ5１";
+INSERT INTO memos SET memo="メモ6１";
+INSERT INTO memos SET memo="メモ7１";
+INSERT INTO memos SET memo="メモ8１";
+INSERT INTO memos SET memo="メモ9１";
+INSERT INTO memos SET memo="メモ10１１";
+INSERT INTO memos SET memo="メモ11１１";
+INSERT INTO memos SET memo="メモ12１１";
+INSERT INTO memos SET memo="メモ13１１";
+INSERT INTO memos SET memo="メモ14１１";
+INSERT INTO memos SET memo="メモ15１１";
